@@ -32,8 +32,7 @@ public class ProdutoServico implements IProdutoServico {
 
 	@Override
 	public List<Produto> consultaCatalogo() {
-		// TODO Auto-generated method stub
-		return null;
+		return produtoRepository.findAll();
 	}
 
 	@Override
@@ -52,16 +51,6 @@ public class ProdutoServico implements IProdutoServico {
 		return new Produto(p.descricao(), p.categoria(), p.custo(), p.quantidadeNoEstoque());
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

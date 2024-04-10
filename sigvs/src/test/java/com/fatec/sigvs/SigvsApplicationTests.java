@@ -24,14 +24,14 @@ class SigvsApplicationTests {
 	void contextLoads() {
 	}
 	@Test
-	void validaPersistencia() {
+	void ct01CadastrarProduto_com_sucesso() {
 		repository.deleteAll();
 		Produto produto1 = new Produto("Eletrobomba 110V para Maquina de Lavar e Lava Louças", "maquina de lavar",51.66, 12);
 		repository.saveAll(Arrays.asList(produto1));
 		assertEquals(1, repository.count());
 	}
 	@Test
-	void validaServico() {
+	void ct02CadastrarProduto_com_sucesso() {
 		repository.deleteAll();
 		ProdutoDTO produto1 = new ProdutoDTO("Eletrobomba 110V para Maquina de Lavar e Lava Louças", "maquina de lavar",51.66, 12);
 		produtoServico.cadastrar(produto1);
