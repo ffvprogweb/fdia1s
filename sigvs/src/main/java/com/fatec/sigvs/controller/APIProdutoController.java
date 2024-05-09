@@ -43,7 +43,7 @@ public class APIProdutoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> cadastrarCliente(@RequestBody ProdutoDTO p) {
+	public ResponseEntity<Object> cadastrarProduto(@RequestBody ProdutoDTO p) {
 		logger.info(">>>>>> apicontroller cadastrar produto iniciado ");
 		try {
 			Optional<Produto> produto = produtoServico.cadastrar(p);
@@ -51,5 +51,6 @@ public class APIProdutoController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
+
 	}
 }

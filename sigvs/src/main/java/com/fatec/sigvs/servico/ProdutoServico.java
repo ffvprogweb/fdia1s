@@ -24,12 +24,14 @@ public class ProdutoServico implements IProdutoServico {
 		return Optional.ofNullable(produtoRepository.save(produto));
 	}
 
+	
 	@Override
 	public Optional<ProdutoDTO> consultaPorId(Long id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		logger.info(">>>>>> servico consulta por id chamado");
+		Produto produto = produtoRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Produto não cadastrado"));
+		return Optional.of(produtoParaDto(produto));
 	}
-
 	@Override
 	public List<Produto> consultaCatalogo() {
 		return produtoRepository.findAll();
@@ -50,7 +52,9 @@ public class ProdutoServico implements IProdutoServico {
 	public Produto dtoParaProduto(ProdutoDTO p) {
 		return new Produto(p.descricao(), p.categoria(), p.custo(), p.quantidadeNoEstoque());
 	}
-
+	public ProdutoDTO produtoParaDto(Produto p) {
+		return new ProdutoDTO(p.getDescricao(), p.getCategoria(), p.getCusto(), p.getQuantidadeNoEstoque());
+	}
 	
 	
 	
